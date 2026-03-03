@@ -7,6 +7,7 @@ public class Game {
     public static void main(String[] args) {
         Random random = new Random();
 
+
         String leftBlock = " | ";
         String rightBlock = " |";
         String wall = " + —— + —— + —— + —— + —— + ";
@@ -19,7 +20,8 @@ public class Game {
         int sizeBoard = 5;//переменные
         int countMonster = (sizeBoard * sizeBoard - sizeBoard);
         int difficultGame;
-        String person = "Hh";
+        //String person = "Hh";
+        Person person = new Person(sizeBoard);
         String monster = "Vv";
         String castle = "Cc";
         String gamingField = "+ —— + —— + —— +\n"
@@ -79,11 +81,12 @@ public class Game {
 
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
-                Person personcl = new Person();
+
                 Taskmonster taskmonster = new Taskmonster();
 
                 //System.out.println("ход не коректен");
-                if ((x == personX && Math.abs(y - personY) == 1) || (y == personY && Math.abs(x - personX) == 1) && (x < 6 && x > 0) && (y < 6 && y > 0)) {
+                //x == personX && Math.abs(y - personY) == 1) || (y == personY && Math.abs(x - personX) == 1) && (x < 6 && x > 0) && (y < 6 && y > 0
+                if (person.moveCorrect(x, y)) {
                     if (board[y - 1][x - 1].equals("  ")) {
                         board[personY - 1][personX - 1] = "  ";
                         personX = x;
