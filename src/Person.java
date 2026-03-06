@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Person {
     private int x, y;
-    private String image = "\uD83E\uDDD9\u200D";
+    private String image = "Hh";//"\uD83E\uDDD9\u200D";
     private int live = 3;
     Random r = new Random();
 
