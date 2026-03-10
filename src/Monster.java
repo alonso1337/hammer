@@ -32,9 +32,10 @@ public class Monster {
     public void setImage(String image) {
         this.image = image;
     }
-    static boolean taskMonster(int difficultGame) {
+
+    public boolean taskMonster(int difficultGame, Scanner scanner) {
         Random r = new Random();
-        Scanner scanner = new Scanner(System.in, "UTF-8");
+
         int x;
         int y;
         switch (difficultGame) {
@@ -98,7 +99,5 @@ public class Monster {
         return  false;
 
     }
-
-    // переопредилим метод:
 
 }

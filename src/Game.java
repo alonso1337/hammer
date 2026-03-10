@@ -76,13 +76,18 @@ public class Game {
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
 
+                if (x < 1 || x > sizeBoard || y < 1 || y > sizeBoard) {
+                    System.out.println("Ошибка: координаты за пределами поля (1-" + sizeBoard + ")");
+                    continue;
+                }
+
                 if (person.moveCorrect(x, y)) {
                     if (board[y - 1][x - 1].equals("  ")) {
                         board[person.getY() - 1][person.getX() - 1] = "  ";
                         person.move(x, y);
                         board[person.getY() - 1][person.getX() - 1] = person.getImage();
                         step++;
-                        System.out.println("Ход корректный; Новые координаты: " + person.getX() + ", " + person.getY() + "\nХод номер: " + step);
+                        System.out.println("Ход корректный; Новые координаты: " + person.getX() + ", " + person.getY() + "\nХод номер: " + step + " жизни " + person.getLive());
                     }
                     else if (board[y - 1][x - 1].equals(castle)) {
                         System.out.println("Вы прошли игру!!!");
@@ -90,17 +95,15 @@ public class Game {
                     }
                     else {
                         // Проверка на монстра
-                        boolean monsterDefeated = false;
-                        for (Monster m : arrMonster) {
-                            if (m != null && m.conflictPerson(x, y)) {
-                                System.out.println("Тебе нужно решить задачку!!!");
-                                if (m.taskMonster(difficultGame)) {
+
+                        for (Monster monster : arrMonster) {
+                            if (monster.conflictPerson(x, y)) {
+                                if (monster.taskMonster(difficultGame,scanner)) {
                                     board[person.getY() - 1][person.getX() - 1] = "  ";
                                     person.move(x, y);
-                                    monsterDefeated = true;
                                 } else {
-                                    personLive--;
-                                    System.out.println("Жизней осталось: " + personLive);
+                                    person.downLive();
+                                    System.out.println("Жизней осталось: " + person.getLive());
                                 }
                                 break;
                             }
@@ -111,7 +114,7 @@ public class Game {
                 }
 
                 // Проверка жизней и возможность воскрешения
-                if (personLive == 0) {boolean monsterDefeated = false;
+                if (person.getLive() == 0) {boolean monsterDefeated = false;
                     System.out.println("Твои жизни иссякли но Всевышний сжалился над тобой, ты сможешь вернуться к игре если решишь задачу");
                     numF = random.nextInt(500);
                     numS = random.nextInt(500);
@@ -120,15 +123,15 @@ public class Game {
                     int ansplayer = scanner.nextInt();
                     if (Trueanswer == ansplayer) {
                         System.out.println("Всевышний дарует тебе второй шанс");
-                        personLive = 1;
+                        person.addLives();
                     } else {
                         System.out.println("ТЫ УМЕР");
-                        personLive = -1;
+                        person.downLive();
                     }
                 }
             }
 
-            if (personLive < 0) {
+            if (person.getLive() < 0) {
                 System.out.println("Поздравляю ты сдох!");
             }
         }
@@ -150,6 +153,5 @@ public class Game {
             System.out.println(rightBlock);
         }
         System.out.println(wall);
-        System.out.println("Жизни: " + personLive);
     }
 }

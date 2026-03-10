@@ -55,4 +55,7 @@ public class Person {
     public void downLive(){
         live--;
     }
+    public void addLives() {
+        live++;
+    }
 }
