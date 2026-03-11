@@ -10,7 +10,6 @@ public class Game {
         int numF;
         int numS;
         int step = 0;
-        int personLive = 3;
         int sizeBoard = 5;
         int difficultGame;
 
@@ -52,11 +51,15 @@ public class Game {
             Monster[] arrMonster = new Monster[countMonster + 1];
             int count = 0;
             Monster test;
-            while (count <= countMonster){
+            while (count < countMonster){
                 if (random.nextBoolean()) {
                     test = new Monster(sizeBoard);
                 }else {
-                    test = new BigMonster(sizeBoard);
+                    if (random.nextBoolean()) {
+                        test = new BigMonster(sizeBoard);
+                    } else {
+                        test = new Trap(sizeBoard);
+                    }
                 }
                 if (board[test.getY()][test.getX()].equals("  ")){
                     board[test.getY()][test.getX()] = test.getImage();
@@ -66,10 +69,10 @@ public class Game {
 
             }
             // Основной игровой цикл
-            while ((personLive >= 0) && !(castleX == person.getX() && castleY == person.getY())) {
+            while ((person.getLive() >= 0) && !(castleX == person.getX() && castleY == person.getY())) {
                 board[person.getY() - 1][person.getX() - 1] = person.getImage();
-                outputBoard(board, personLive, sizeBoard, leftBlock, rightBlock, wall);
-
+                outputBoard(board, sizeBoard, leftBlock, rightBlock, wall);
+                System.out.println("Жизни " + person.getLive() + "  Ход " + step);
                 System.out.println("Введите куда будет ходить персонаж (ход возможен только по вертикали и горизонтали на одну клетку);");
                 System.out.println(" Координаты персонажа - (x: " + person.getX() + ", y: " + person.getY() + "))");
 
@@ -125,23 +128,23 @@ public class Game {
                         System.out.println("Всевышний дарует тебе второй шанс");
                         person.addLives();
                     } else {
-                        System.out.println("ТЫ УМЕР");
+                        System.out.println("Увы, придется погибнуть");
                         person.downLive();
                     }
                 }
             }
 
             if (person.getLive() < 0) {
-                System.out.println("Поздравляю ты сдох!");
+                System.out.println("Поздравляю, ты УМЕР!");
             }
         }
-        else if (answer.equalsIgnoreCase("НЕТ")) {
+        else{
             System.out.println("Почему ты не хочешь со мной поиграть?");
         }
         scanner.close();
     }
 
-    static void outputBoard(String[][] board, int personLive, int sizeBoard,
+    static void outputBoard(String[][] board, int sizeBoard,
                             String leftBlock, String rightBlock, String wall) {
         for (int y = 0; y < sizeBoard; y++) {
             System.out.println(wall);
