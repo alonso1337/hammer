@@ -35,7 +35,7 @@ public class BigMonster extends Monster {
                 System.out.println("Найди силу тока в резисторе, если напряжение равно " + x + " В, а сопротивление " + y + " Ом.(округли до целого)");
                 System.out.print("I = ");
                 if (Math.abs(x / y - scanner.nextDouble()) < 0.001) {
-                    System.out.println("Поздравляю, ответ правильный!");
+                    System.out.println("Физик повержен!");
                     return true;
                 } else {
                     System.out.println("К сожалению, ты проиграл схватку.");
@@ -47,7 +47,7 @@ public class BigMonster extends Monster {
                 System.out.println("Найди общее сопротивление резисторов, подключенных последовательно. Сопротивление первого: " + x + " Ом, сопротивление второго: " + y + " Ом.");
                 System.out.print("R = ");
                 if (Math.abs(x + y - scanner.nextDouble()) < 0.001) {
-                    System.out.println("Поздравляю, ответ правильный!");
+                    System.out.println("Физик повержен!");
                     return true;
                 } else {
                     System.out.println("К сожалению, ты проиграл схватку.");
@@ -59,7 +59,7 @@ public class BigMonster extends Monster {
                 System.out.println("Какова мощность лампочки, если напряжение равно " + x + " В, а сила тока равна " + y + " А?");
                 System.out.print("P = ");
                 if (Math.abs(x * y - scanner.nextDouble()) < 0.001) {
-                    System.out.println("Поздравляю, ответ правильный!");
+                    System.out.println("Физик повержен!");
                     return true;
                 } else {
                     System.out.println("К сожалению, ты проиграл схватку.");
@@ -72,7 +72,7 @@ public class BigMonster extends Monster {
                 System.out.print("R = ");
                 double correctAnswer = (x * y) / (x + y);
                 if (Math.abs(correctAnswer - scanner.nextDouble()) < 0.001) {
-                    System.out.println("Поздравляю, ответ правильный!");
+                    System.out.println("Физик повержен!");
                     return true;
                 } else {
                     System.out.println("К сожалению, ты проиграл схватку.");
