@@ -40,7 +40,7 @@ public class Monster {
             case (1):
                 x = r.nextInt(100);
                 y = r.nextInt(100);
-                System.out.println("Чему равно" + x + " + " + y);
+                System.out.println("Чему равно " + x + " + " + y);
                 if (x + y == scanner.nextInt()) {
                     System.out.println("Поздравляю ответ правильный");
                     return true;
@@ -51,7 +51,7 @@ public class Monster {
             case (2):
                 x = r.nextInt(200);
                 y = r.nextInt(200);
-                System.out.println("Чему равно" + x + " + " + y);
+                System.out.println("Чему равно " + x + " + " + y);
                 if (x + y == scanner.nextInt()) {
                     System.out.println("Поздравляю ответ правильный");
                     return true;
@@ -62,7 +62,7 @@ public class Monster {
             case (3):
                 x = r.nextInt(20);
                 y = r.nextInt(20);
-                System.out.println("Чему равно" + x + " * " + y);
+                System.out.println("Чему равно " + x + " * " + y);
                 if (x * y == scanner.nextInt()) {
                     System.out.println("Поздравляю ответ правильный");
                     return true;
@@ -73,7 +73,7 @@ public class Monster {
             case (4):
                 x = r.nextInt(35);
                 y = r.nextInt(35);
-                System.out.println("Чему равно" + x + " * " + y);
+                System.out.println("Чему равно " + x + " * " + y);
                 if (x * y == scanner.nextInt()) {
                     System.out.println("Поздравляю ответ правильный");
                     return true;
@@ -85,7 +85,7 @@ public class Monster {
 
                 x = r.nextInt(50);
                 y = r.nextInt(50);
-                System.out.println("Чему равно" + x + " * " + y);
+                System.out.println("Чему равно " + x + " * " + y);
                 if (x * y == scanner.nextInt()) {
                     System.out.println("Поздравляю ответ правильный");
                     return true;
