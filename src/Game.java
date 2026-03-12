@@ -15,7 +15,6 @@ public class Game {
         int secondlife = 0;
 
         Person person = new Person(sizeBoard);
-        //String monster = "Vv";
         String castle = "Cc";
         String[][] board = new String[sizeBoard][sizeBoard];
         Scanner scanner = new Scanner(System.in, "UTF-8");
