@@ -12,6 +12,7 @@ public class Game {
         int step = 0;
         int sizeBoard = 5;
         int difficultGame;
+        int secondlife = 0;
 
         Person person = new Person(sizeBoard);
         //String monster = "Vv";
@@ -117,7 +118,7 @@ public class Game {
                 }
 
                 // Проверка жизней и возможность воскрешения
-                if (person.getLive() == 0) {boolean monsterDefeated = false;
+                if ((person.getLive() == 0) && (secondlife == 0)) {boolean monsterDefeated = false;
                     System.out.println("Твои жизни иссякли но Всевышний сжалился над тобой, ты сможешь вернуться к игре если решишь задачу");
                     numF = random.nextInt(500);
                     numS = random.nextInt(500);
@@ -127,16 +128,21 @@ public class Game {
                     if (Trueanswer == ansplayer) {
                         System.out.println("Всевышний дарует тебе второй шанс");
                         person.addLives();
+                        secondlife++;
                     } else {
                         System.out.println("Увы, придется погибнуть");
                         person.downLive();
                     }
                 }
+                if (person.getLive() <= 0) {
+                    System.out.println("Поздравляю, ты УМЕР!");
+                    break;
+                }
             }
 
-            if (person.getLive() < 0) {
-                System.out.println("Поздравляю, ты УМЕР!");
-            }
+            //if (person.getLive() <= 0) {
+              //  System.out.println("Поздравляю, ты УМЕР!");
+            //}
         }
         else{
             System.out.println("Почему ты не хочешь со мной поиграть?");
