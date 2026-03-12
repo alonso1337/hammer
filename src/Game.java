@@ -29,7 +29,6 @@ public class Game {
             System.out.println("Выбери сложность игры(от 1 до 5):");
             difficultGame = scanner.nextInt();
 
-            // Инициализация поля
             for (int y = 0; y < sizeBoard; y++) {
                 for (int x = 0; x < sizeBoard; x++) {
                     board[y][x] = "  ";
@@ -42,12 +41,10 @@ public class Game {
             }
             System.out.println("Выбранная сложность:\t" + difficultGame);
 
-            // Размещение замка
             int castleX = 1 + random.nextInt(sizeBoard - 1);
             int castleY = 1;
             board[castleY - 1][castleX - 1] = castle;
 
-            // Размещение монстров
             int countMonster = sizeBoard * sizeBoard - sizeBoard - 5;
             Monster[] arrMonster = new Monster[countMonster + 1];
             int count = 0;
@@ -69,7 +66,6 @@ public class Game {
                 }
 
             }
-            // Основной игровой цикл
             while ((person.getLive() >= 0) && !(castleX == person.getX() && castleY == person.getY())) {
                 board[person.getY() - 1][person.getX() - 1] = person.getImage();
                 outputBoard(board, sizeBoard, leftBlock, rightBlock, wall);
@@ -98,7 +94,6 @@ public class Game {
                         break;
                     }
                     else {
-                        // Проверка на монстра
 
                         for (Monster monster : arrMonster) {
                             if (monster.conflictPerson(x, y)) {
@@ -117,7 +112,6 @@ public class Game {
                     System.out.println("Некорректный ход!");
                 }
 
-                // Проверка жизней и возможность воскрешения
                 if ((person.getLive() == 0) && (secondlife == 0)) {boolean monsterDefeated = false;
                     System.out.println("Твои жизни иссякли но Всевышний сжалился над тобой, ты сможешь вернуться к игре если решишь задачу");
                     numF = random.nextInt(500);
@@ -140,9 +134,6 @@ public class Game {
                 }
             }
 
-            //if (person.getLive() <= 0) {
-              //  System.out.println("Поздравляю, ты УМЕР!");
-            //}
         }
         else{
             System.out.println("Почему ты не хочешь со мной поиграть?");
